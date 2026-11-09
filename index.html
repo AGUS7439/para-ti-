@@ -1,0 +1,804 @@
+
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#160d17">
+<meta name="description" content="Una pequeña historia que tenía ganas de contarte.">
+<title>Desde que llegaste ♡</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #160d17;
+  --pink: #f5b6cb;
+  --cream: #fff3ec;
+  --muted: #d9bdc9;
+  --gold: #e7c49b;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    #402136 0%,
+    #1b101c 42%,
+    #120b14 100%
+  );
+  color: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(#fff8 0.7px, transparent 1px);
+  background-size: 37px 37px;
+  opacity: .12;
+}
+
+main {
+  max-width: 760px;
+  margin: auto;
+  padding: 20px 19px 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 2px 26px;
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+}
+
+.music {
+  border: 1px solid #ffffff42;
+  background: #ffffff10;
+  color: var(--cream);
+  border-radius: 40px;
+  padding: 10px 13px;
+  font: inherit;
+  font-size: 12px;
+  letter-spacing: 0;
+  cursor: pointer;
+}
+
+.intro {
+  text-align: center;
+  padding: 37px 0 29px;
+}
+
+.eyebrow {
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.heart {
+  font-size: 32px;
+  color: var(--pink);
+  animation: pulse 2.3s infinite;
+  display: block;
+  margin: 15px;
+}
+
+h1, h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  line-height: 1.17;
+  margin: 15px 0;
+}
+
+h1 { font-size: clamp(42px, 9vw, 72px); }
+h2 { font-size: clamp(33px, 7vw, 50px); }
+
+em {
+  color: var(--pink);
+  font-weight: 500;
+}
+
+.lead {
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--muted);
+  max-width: 520px;
+  margin: 18px auto 28px;
+}
+
+.btn {
+  display: inline-block;
+  cursor: pointer;
+  border: 0;
+  border-radius: 50px;
+  padding: 15px 24px;
+  background: linear-gradient(120deg, #f9c4d4, #df9fb8);
+  color: #311728;
+  font-weight: 700;
+  font-size: 14px;
+  box-shadow: 0 9px 35px #ec9bbb33;
+  transition: transform .2s;
+}
+
+.btn:hover { transform: translateY(-2px); }
+
+.ghost {
+  background: #ffffff10;
+  color: var(--cream);
+  border: 1px solid #ffffff44;
+  box-shadow: none;
+}
+
+.panel {
+  display: none;
+  animation: appear .7s both;
+}
+
+.panel.active { display: block; }
+
+.section {
+  text-align: center;
+  padding: 15px 0 35px;
+}
+
+.counter {
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+.glass {
+  border: 1px solid #ffffff29;
+  background: linear-gradient(145deg, #ffffff13, #ffffff05);
+  box-shadow: 0 15px 50px #0004;
+  border-radius: 26px;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.glass p, .letter p {
+  line-height: 1.95;
+  font-size: 15px;
+  color: #f0dfe5;
+}
+
+.video {
+  width: 100%;
+  max-height: 520px;
+  object-fit: contain;
+  background: #09070a;
+  border-radius: 17px;
+  display: block;
+}
+
+.note {
+  color: var(--muted);
+  font-size: 12px;
+  margin: 12px;
+}
+
+.quote {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(22px, 5vw, 31px);
+  line-height: 1.5;
+  color: var(--cream);
+  padding: 12px 6px;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.photo-grid img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.photo-grid img:last-child {
+  grid-column: 1 / -1;
+  height: 280px;
+  object-position: center 30%;
+}
+
+.nav {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  margin: 27px 0;
+  flex-wrap: wrap;
+}
+
+.letter {
+  text-align: left;
+  padding: 22px;
+}
+
+.letter p { margin: 0 0 19px; }
+
+.signature {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  color: var(--pink) !important;
+  font-size: 23px !important;
+}
+
+.progress {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+  margin: 5px auto 23px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ffffff45;
+}
+
+.dot.on {
+  width: 24px;
+  border-radius: 10px;
+  background: var(--pink);
+}
+
+.floating {
+  position: fixed;
+  pointer-events: none;
+  z-index: 0;
+  opacity: .25;
+  animation: floatUp linear forwards;
+  color: #ffb5ce;
+}
+
+.endheart {
+  font-size: 90px;
+  color: var(--pink);
+  animation: pulse 2s infinite;
+  margin: 25px;
+}
+
+.reveal { display: none; }
+
+.reveal.show {
+  display: block;
+  animation: appear .8s both;
+}
+
+.small {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+@keyframes pulse {
+  50% { transform: scale(1.12); }
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatUp {
+  from { transform: translateY(105vh) rotate(0); }
+  to { transform: translateY(-20vh) rotate(30deg); opacity: 0; }
+}
+
+@media (min-width: 650px) {
+  .glass { padding: 28px; }
+  .photo-grid { grid-template-columns: repeat(3, 1fr); }
+  .photo-grid img,
+  .photo-grid img:last-child {
+    height: 330px;
+    grid-column: auto;
+  }
+  .letter { padding: 40px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+
+<body>
+<main>
+
+<header class="top">
+  <span>Una historia para ti ♡</span>
+  <button class="music" id="musicBtn" aria-label="Activar música">
+    ♫ Música
+  </button>
+</header>
+
+<div class="progress" id="progress"></div>
+
+<!-- PORTADA -->
+<section class="panel active" data-step="0">
+  <div class="intro">
+    <div class="eyebrow">Hay algo que quiero decirte</div>
+    <span class="heart">♡</span>
+
+    <h1>
+      Desde que llegaste,<br>
+      <em>algo cambió en mí.</em>
+    </h1>
+
+    <p class="lead">
+      Hay personas que llegan de manera inesperada y,
+      sin saberlo, hacen que los días tengan algo más bonito.
+      Esta pequeña historia es para ti. ♡
+    </p>
+
+    <button class="btn" onclick="startStory()">
+      Esto es para ti ♡
+    </button>
+
+    <p class="small">
+      Tómate tu tiempo. Cada parte tiene algo que quiero contarte.
+    </p>
+  </div>
+</section>
+
+<!-- CAPÍTULO 1 -->
+<section class="panel" data-step="1">
+  <div class="section">
+    <div class="counter">Capítulo 01 · Nuestro primer recuerdo</div>
+    <h2>El día que <em>te conocí</em></h2>
+
+    <p class="lead">
+      Hay momentos que parecen pequeños, pero terminan
+      significando muchísimo.
+    </p>
+
+    <div class="glass">
+      <video class="video" controls playsinline preload="metadata"
+             poster="assets/foto1.jpg">
+        <source src="assets/primer_dia.mp4" type="video/mp4">
+        Tu navegador no puede reproducir este video.
+      </video>
+
+      <p class="note">Dale play a este recuerdo ♡</p>
+
+      <p>
+        A veces las cosas más bonitas suceden cuando menos las
+        esperamos. Y yo agradezco muchísimo aquel día en que
+        te vi por primera vez.
+      </p>
+
+      <p>
+        Quién diría que todo comenzaría por una entrega…
+        Suena un poquito raro, lo sé, pero entre tantas cosas
+        de aquel día, tú fuiste quien llamó mi atención.
+      </p>
+
+      <p>
+        No imaginaba que ese encuentro tan inesperado me
+        permitiría conocer a una personita tan maravillosa
+        como tú. Hoy me alegra muchísimo que nuestros
+        caminos se hayan cruzado.
+      </p>
+
+      <p>
+        Y hay algo que quizá no sabes: leer tus mensajes
+        cada día se ha convertido en uno de esos pequeños
+        momentos que siempre me sacan una sonrisa. ♡
+      </p>
+    </div>
+
+    <div class="nav">
+      <button class="btn ghost" onclick="go(0)">Anterior</button>
+      <button class="btn" onclick="go(2)">Seguir leyendo →</button>
+    </div>
+  </div>
+</section>
+
+<!-- CAPÍTULO 2 -->
+<section class="panel" data-step="2">
+  <div class="section">
+    <div class="counter">Capítulo 02 · Lo que veo en ti</div>
+    <h2>No es solo lo <em>bonita que eres</em></h2>
+
+    <p class="lead">
+      Aunque podría quedarme admirando tu sonrisa,
+      hay algo que me gusta todavía más.
+    </p>
+
+    <div class="glass">
+      <div class="photo-grid">
+        <img src="assets/foto1.jpg" alt="Un recuerdo bonito" loading="lazy">
+        <img src="assets/foto2.jpg" alt="Una fotografía especial" loading="lazy">
+        <img src="assets/foto3.jpg" alt="Otro recuerdo de ella" loading="lazy">
+      </div>
+
+      <p>
+        Me encanta tu forma de ser, tu esencia y esos pequeños
+        detalles que te hacen tan única. Me encanta descubrir
+        cómo piensas, escucharte y conocer poco a poco todo
+        lo bonito que hay en ti.
+      </p>
+
+      <p>
+        Y sí, también amo tus ojitos, tus cachetitos y esa
+        carita tan linda que me dan ganas de mirar una y otra vez.
+        Pero, por encima de todo, admiro a la persona que eres:
+        auténtica, especial y maravillosa a tu manera.
+      </p>
+
+      <p>
+        Cada día encuentro una razón nueva para apreciarte
+        todavía más.
+      </p>
+
+      <div class="quote">
+        “Lo más bonito de ti no cabe en una fotografía.”
+      </div>
+    </div>
+
+    <div class="nav">
+      <button class="btn ghost" onclick="go(1)">Anterior</button>
+      <button class="btn" onclick="go(3)">Hay algo más… →</button>
+    </div>
+  </div>
+</section>
+
+<!-- CAPÍTULO 3 -->
+<section class="panel" data-step="3">
+  <div class="section">
+    <div class="counter">Capítulo 03 · Desde el corazón</div>
+    <h2>Algo que me cuesta <em>decirte</em></h2>
+
+    <div class="glass letter">
+      <p>
+        Quiero que sepas algo: desde que te conocí, despertaste
+        en mí una ilusión que hacía mucho tiempo no sentía.
+        No fue algo que buscara ni que tuviera planeado;
+        simplemente ocurrió al ir descubriendo a la persona
+        tan bonita que eres.
+      </p>
+
+      <p>
+        Tu manera de ser, tus detalles y esa esencia tan tuya
+        hicieron que poco a poco te volvieras alguien muy
+        especial para mí.
+      </p>
+
+      <p>
+        Quizá ya te lo he dicho, pero a veces me cuesta demostrar
+        todo lo que siento. No siempre encuentro las palabras
+        correctas y a veces me guardo cosas que quisiera decirte
+        cuando te tengo enfrente.
+      </p>
+
+      <p>
+        Por eso hice esta pequeña página: porque mereces saber
+        lo mucho que te aprecio y lo especial que eres para mí,
+        incluso cuando no sé expresarlo tan bien en persona.
+      </p>
+
+      <p>
+        Me gustas, sí, y claro que me parecen preciosos tus ojitos,
+        tus cachetitos y tu sonrisa. Pero lo que más me ha
+        enamorado de conocerte es tu manera de ser.
+      </p>
+
+      <p>
+        Me encanta que seas tú misma, tu forma de hablar,
+        tus ocurrencias y todos esos detalles que quizá para ti
+        son pequeños, pero que a mis ojos te hacen extraordinaria.
+      </p>
+
+      <p>
+        Quiero seguir conociéndote de verdad, también en tus días
+        difíciles, escuchar tus historias, acompañarte y compartir
+        contigo momentos que algún día podamos recordar
+        con una sonrisa.
+      </p>
+
+      <p>
+        No sé exactamente qué nos depare el tiempo, y tampoco
+        quiero prometerte una historia perfecta.
+        Lo que sí quiero es tratarte con el cariño y el respeto
+        que mereces, ser sincero contigo y demostrarte con hechos
+        que tengo ganas de construir algo bonito, a nuestro ritmo
+        y sin dejar de ser nosotros mismos.
+      </p>
+
+      <p class="signature">Con mucho cariño, para ti. ♡</p>
+    </div>
+
+    <div class="nav">
+      <button class="btn ghost" onclick="go(2)">Anterior</button>
+      <button class="btn" onclick="go(4)">Lo que deseo contigo →</button>
+    </div>
+  </div>
+</section>
+
+<!-- CAPÍTULO 4 -->
+<section class="panel" data-step="4">
+  <div class="section">
+    <div class="counter">Capítulo 04 · Si la vida nos deja</div>
+    <h2>Quiero construir <em>algo bonito</em></h2>
+
+    <div class="glass">
+      <div class="quote">
+        “No se trata de estar juntos cada segundo,
+        sino de elegirnos con cariño incluso en los días complicados.”
+      </div>
+
+      <p>
+        Sé que a veces la distancia, los horarios y las
+        responsabilidades pueden hacer que no esté tan presente
+        como quisiera. Pero quiero que tengas claro que mi
+        intención es dar lo mejor de mí, encontrar momentos
+        para nosotros y demostrarte con acciones que me importas.
+      </p>
+
+      <p>
+        Quisiera compartir contigo conversaciones interminables,
+        risas inesperadas, abrazos largos, aventuras sencillas
+        y esos días normales que se vuelven especiales
+        por estar con la persona indicada.
+      </p>
+
+      <p>
+        No quiero apresurar nada ni hacerte sentir presionada.
+        Quiero que lo que nazca entre nosotros sea mutuo,
+        bonito y a nuestro ritmo. Y si tú también lo deseas,
+        me encantaría descubrir hasta dónde podemos llegar.
+      </p>
+    </div>
+
+    <div class="nav">
+      <button class="btn ghost" onclick="go(3)">Anterior</button>
+      <button class="btn" onclick="go(5)">Una última sorpresa ♡</button>
+    </div>
+  </div>
+</section>
+
+<!-- CAPÍTULO FINAL -->
+<section class="panel" data-step="5">
+  <div class="section">
+    <div class="counter">Capítulo final · Solo para ti</div>
+    <h2>Si pudiera pedir <em>un deseo…</em></h2>
+
+    <div class="glass">
+      <div class="endheart">♡</div>
+
+      <p>
+        Sería seguir conociéndote, seguir viéndote sonreír
+        y tener la oportunidad de crear una historia bonita contigo.
+      </p>
+
+      <p>
+        Gracias por llegar a mi vida y hacerme sentir algo
+        tan especial. Pase lo que pase, quería que supieras
+        lo valiosa que eres para mí.
+      </p>
+
+      <button class="btn" id="surprise" onclick="surprise()">
+        Toca aquí, bonita ♡
+      </button>
+
+      <div id="hidden" class="reveal">
+        <div class="quote">
+          “No sé qué nos tenga preparado el futuro,
+          pero me haría muy feliz que tú formaras parte del mío.”
+        </div>
+
+        <p>Me encantas. Muchísimo. ♡</p>
+
+        <p class="signature">
+          Con cariño, alguien que sonríe al pensar en ti.
+        </p>
+      </div>
+    </div>
+
+    <div class="nav">
+      <button class="btn ghost" onclick="go(4)">Anterior</button>
+      <button class="btn ghost" onclick="go(0)">Volver al inicio ↺</button>
+    </div>
+  </div>
+</section>
+
+<footer style="text-align:center;color:#bd9cae;font-size:11px;letter-spacing:1px;padding:20px">
+  HECHO CON EL CORAZÓN ♡
+</footer>
+
+</main>
+
+<!-- MÚSICA DE FONDO -->
+<audio id="bgMusic" loop preload="auto">
+  <source src="assets/musica.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+let current = 0;
+
+const panels = [...document.querySelectorAll('.panel')];
+const progress = document.getElementById('progress');
+const music = document.getElementById('bgMusic');
+const musicBtn = document.getElementById('musicBtn');
+const videos = [...document.querySelectorAll('video')];
+
+let musicWanted = true;
+let pausedForVideo = false;
+
+music.volume = 0.55;
+
+// Actualizar el botón de música.
+function updateMusicButton() {
+  if (!music.paused) {
+    musicBtn.textContent = '❚❚ Pausar música';
+    musicBtn.setAttribute('aria-label', 'Pausar música');
+  } else {
+    musicBtn.textContent = '♫ Música';
+    musicBtn.setAttribute('aria-label', 'Reproducir música');
+  }
+}
+
+// Reproducir la música sin interrumpir la página.
+function playMusic() {
+  musicWanted = true;
+
+  if (pausedForVideo) return;
+
+  const attempt = music.play();
+
+  if (attempt && typeof attempt.catch === 'function') {
+    attempt.catch(() => {
+      updateMusicButton();
+    });
+  }
+}
+
+// Intentar reproducir música al abrir la página.
+// En iPhone puede requerir que ella toque un botón.
+window.addEventListener('load', () => {
+  playMusic();
+});
+
+// También se intenta al tocar la pantalla por primera vez.
+function unlockMusic() {
+  if (musicWanted && !pausedForVideo && music.paused) {
+    playMusic();
+  }
+}
+
+document.addEventListener('pointerdown', unlockMusic, {
+  once: true
+});
+
+document.addEventListener('keydown', unlockMusic, {
+  once: true
+});
+
+// Control manual.
+musicBtn.addEventListener('click', () => {
+  if (!music.paused) {
+    musicWanted = false;
+    music.pause();
+  } else {
+    playMusic();
+  }
+});
+
+// Mantener sincronizado el botón.
+music.addEventListener('play', updateMusicButton);
+music.addEventListener('pause', updateMusicButton);
+music.addEventListener('error', () => {
+  musicBtn.textContent = '♫ Música no disponible';
+});
+
+// Primera interacción con la historia.
+function startStory() {
+  if (musicWanted) playMusic();
+  go(1);
+}
+
+// Indicadores de capítulos.
+function dots() {
+  progress.innerHTML = panels.map((_, i) =>
+    `<span class="dot ${i === current ? 'on' : ''}"></span>`
+  ).join('');
+}
+
+// Cambiar de capítulo.
+function go(n) {
+  videos.forEach(video => video.pause());
+
+  current = n;
+
+  panels.forEach((panel, i) => {
+    panel.classList.toggle('active', i === n);
+  });
+
+  dots();
+
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+}
+
+// Pausar la canción al reproducir el video.
+videos.forEach(video => {
+  video.addEventListener('play', () => {
+    pausedForVideo = true;
+    music.pause();
+  });
+
+  function resumeAfterVideo() {
+    pausedForVideo = false;
+
+    if (musicWanted) {
+      playMusic();
+    }
+  }
+
+  video.addEventListener('pause', resumeAfterVideo);
+  video.addEventListener('ended', resumeAfterVideo);
+});
+
+// Corazones animados.
+function hearts(n = 18) {
+  for (let i = 0; i < n; i++) {
+    const heart = document.createElement('span');
+
+    heart.className = 'floating';
+    heart.textContent = Math.random() > .5 ? '♡' : '♥';
+
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.bottom = '-30px';
+    heart.style.fontSize = (12 + Math.random() * 20) + 'px';
+    heart.style.animationDuration = (4 + Math.random() * 5) + 's';
+    heart.style.animationDelay = Math.random() * 2 + 's';
+
+    document.body.append(heart);
+
+    setTimeout(() => heart.remove(), 11000);
+  }
+}
+
+// Sorpresa final.
+function surprise() {
+  document.getElementById('hidden').classList.add('show');
+  document.getElementById('surprise').style.display = 'none';
+
+  hearts(55);
+}
+
+dots();
+hearts(12);
+updateMusicButton();
+</script>
+</body>
+</html>
